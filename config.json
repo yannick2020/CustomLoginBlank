@@ -1,0 +1,121 @@
+{
+	"AppConfig":{
+		"debug":true,
+		"CacheAllUsersOnStartup":true,
+		"ProxyMode":false,
+		"LoginStub":false,
+		"LoginWorkaround":false,
+		"ValidateNewUsersEmail":false,
+		"ConnectUserAfterForgotPassword":true,
+		"IdealSpacesURL":"https://foo.bar/",
+		"ProjectThumbnailsURL":"https://foo.bar/",
+		"LoginBaseURL":"http://foo.bar/"
+	},
+	"UserConfig":{
+		"ProfileAttributes":["Roles","name","email"],
+		"RoleAttributeName":"",
+		"StoreIntegrationData":"",
+		"UserDisplayName":"",
+		"UserIdPrefix":""
+	},
+	"DatabaseConfig":{
+		"SecurityConfig":{
+		},
+		"mandatoryFields":{"name":true,"email":true,"username":true,"password":true,"confirmemail":true,"confirmpassword":true}
+	},
+	"FilePathsConfig":{
+		"APIDirectory":"BlankAPI"
+	},
+	"ClientConfig":{
+		"title":"Login Console",
+		"language":"en-US",
+		"customLocale":"",
+		"PrivacyPolicyLink":"http://foo.bar",
+		"TermsAndConditionsLink":"http://foo.bar",
+		"rolesList":["Admin","SuperAdmin","Designer"],
+		"RegistrationFormFields": {
+			"name":"",
+			"preferred_username": "",
+			"email": "",
+			"confirmemail": "",
+			"username": "",
+			"password": "",
+			"confirmpassword": "lbl.passwordrequirement",
+			"custom:CustomData": ""
+		},
+		"ValidateRegistrationFormFields": {
+			"username":"",
+			"password":"",
+			"confirmation":"lbl.accountvalidationdescription"
+		},
+		"ForgotPasswordFormFields": {
+			"username": ""
+		},
+		"ValidateForgotPasswordFormFields": {
+			"username": "",
+			"confirmation": "",
+			"password": ""
+		},
+		"StyleContexts":{
+			"ids":""
+		}
+	},
+	"PermissionConfig":{
+		"ViewAccount":[],
+		"ModifyAccount":[],
+		"ViewMyProjects":[],
+		"SearchUser":["SuperAdmin","Admin","Designer"],
+		"SearchProject":["Designer","Admin"],
+		"ViewStoresStatistics":["Designer","Admin"],
+		"ViewUsers":["SuperAdmin","Admin","Designer"],
+		"EditUsers":["SuperAdmin","Admin"],
+		"SearchAllStores":["SuperAdmin","Admin"],
+		"ViewOthersProjects":["Admin","Designer"],
+		"ProjectsStayInStore":["Designer"]
+	},
+	"FieldRolesConfig":{
+		"IsLenient":false,
+		"Roles":{
+			"ViewSelf":["SuperAdmin","Admin"],
+			"ViewOthers":["SuperAdmin","Admin"],
+			"EditSelf":["SuperAdmin","Admin"],
+			"EditOthers":["SuperAdmin","Admin"]
+		},
+		"name":{
+			"ViewSelf":[],
+			"ViewOthers":[],
+			"EditSelf":[],
+			"EditOthers":[]
+		},
+		"email":{
+			"ViewSelf":[],
+			"ViewOthers":[],
+			"EditSelf":[],
+			"EditOthers":[]
+		}
+	},
+	"UserInteractionRoles":{
+		"IsLenient":false,
+		"SuperAdmin":{
+			"CanFind":["SuperAdmin"],
+			"CanEditSelf":[],
+			"CanEditOthers":[],
+			"CanDeleteSelf":[],
+			"CanDeleteOthers":[]
+		},
+		"Admin":{
+			"CanFind":["SuperAdmin","Admin"],
+			"CanEditSelf":["SuperAdmin"],
+			"CanEditOthers":["SuperAdmin"],
+			"CanDeleteSelf":[],
+			"CanDeleteOthers":[]
+		},
+		"Designer":{
+			"CanFind":["SuperAdmin","Admin"],
+			"CanEditSelf":["SuperAdmin","Admin"],
+			"CanEditOthers":["SuperAdmin","Admin"],
+			"CanDeleteSelf":[],
+			"CanDeleteOthers":[]
+		}
+	}
+}

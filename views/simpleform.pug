@@ -1,0 +1,26 @@
+//- A simple form templade, mostly used for unauthenticated requests like register, forgotpassword etc.(not login)
+doctype html
+html
+    head
+        title= "Register"
+        include scripts
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        block head
+            script(src='/javascripts/formScript.js' defer)
+
+    body
+        #content(style='width:100%;margin:auto')
+            .tinyForm
+                img(src='/images/logo.png')
+                each details,field in form
+                    .entry
+                        -var mandatory = (mandatoryFields[field])?'*':'';
+                        .inputlabel= mandatory + (Locale("lbl."+field)||field) + ' :'
+                        .inputdiv
+                            input.valid.FormField.inputfield(id=field, name=field, type=field , onkeypress="checkKey(event)", value=(prefilledData[field])?prefilledData[field]:'', disabled=(prefilledData[field]))
+                br
+                .button.active( onclick="submit();")
+                    .label(style='width:100%')= Locale('lbl.submit')
+                .button.active( onclick="window.history.back();")
+                    .label(style='width:100%')= Locale('lbl.cancel')
+

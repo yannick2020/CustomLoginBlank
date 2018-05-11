@@ -1,0 +1,14 @@
+extends layout
+block head
+    //-Front end Stylesheets and JS
+block content
+    .center
+        .entry
+            .inputdiv
+                input#currentSearch(type='hidden')
+                input.inputfield#unserinfo(onkeydown='if(event.keyCode ===13)SearchUsers.Rechercher();' placeholder= Locale('lbl.Keyword'))
+                .button.active(onclick="SearchUsers.Rechercher()")
+                    .label.fas.fa-search
+        br
+        #results(style="width:100%")
+

@@ -1,0 +1,40 @@
+extends layout
+block head
+    //-Front end Stylesheets and JS
+    script roleKey = "#{roleKey}";
+    -var action = (otherProfile)?"EditOthers":"EditSelf"
+block content
+    .center
+        label(style='font-style:italic;')= '*'+Locale("lbl.mandatoryfields")
+        .entry
+            .inputlabel= '*'+Locale("lbl.username")+' :'
+            .inputdiv= user["username"]
+        #formdiv(onkeydown='if(event.keyCode ===13)EditUser.UpdateUser();')
+            each val,field in user
+                if SessionUser.UserCanTakeAction("FieldRolesConfig",[field],action)
+                    if field !== StoreData
+                        .entry
+                            -var mandatory = (mandatoryFields[field])?'*':'';
+                            label.inputlabel(for=field)= mandatory+(Locale("lbl."+field)||field)+' :'
+                            .inputdiv
+                                input.inputfield(id=field, type='text',  value=user[field], name=field )
+                    else
+                        .entry
+                            label.inputlabel(for='ZipCode')= Locale('lbl.zipcode') + ' :'
+                            .inputdiv
+                                input#ZipCode.inputfield( maxlength="5", size='5' min="0")
+                        .entry
+                            label.inputlabel(for='StoreField')= (Locale("lbl."+field)||field)+' :'
+                            .inputdiv
+                                select.inputfield(id='StoreField', name=field, disabled=true )
+                                    if user['StoreName']
+                                        option(value=user[field])= user['StoreName']
+        br
+        .buttoncolumn
+                #bsave.button.active(onclick='EditUser.UpdateUser();')
+                    .label= Locale("lbl.save")
+                #bcancel.button.active(onclick="document.location.href='"+cancelCallback+"'")
+                    .label= Locale("lbl.cancel")
+                if SessionUser.UserCanTakeAction("UserInteractionRoles",user.GetRoles(),((otherProfile)?"CanDeleteOthers":"CanDeleteSelf"))
+                    #bdelete.button.active(onclick='EditUser.DeleteUser(this);' confirmation=Locale('lbl.deleteaccountconfirm'))
+                        .label.fas.fa-exclamation-triangle= ' '+Locale("lbl.deleteuser")

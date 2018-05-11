@@ -1,0 +1,38 @@
+extends layout
+block head
+    //-Front end Stylesheets and JS
+
+block content
+    .center
+        .button.inactive(id='Refresh')
+            .label= Locale("lbl.refreshusers")
+        ul#results()
+        br
+        a(onclick='StatisticsQuery.DropdownMenu(event,"StoreStatsQuery")')=Locale('lbl.storestatsquery')+ '[+]'
+        #StoreStatsQuery.dropdown-content(style='display:none')
+            .entry
+                .inputlabel=Locale('lbl.projectdatefrom')
+                .inputdiv
+                    input(size='50' class='inputfield StoreStatsQuery' type='date' name='dateFrom')
+            .entry
+                .inputlabel=Locale('lbl.projectdateto')
+                .inputdiv
+                    input(size='50' class='inputfield StoreStatsQuery' type='date' name='dateTo')
+            .button.inactive(id='DesignerStats')
+                .label= Locale("lbl.designerstats")
+        br
+        a(onclick='StatisticsQuery.DropdownMenu(event,"UserStatsQuery")')=Locale('lbl.userstatsquery')+'[+]'
+        #UserStatsQuery.dropdown-content(style='display:none')
+            .entry
+                .inputlabel=Locale('lbl.projectdatefrom')
+                .inputdiv
+                    input(size='50' class='inputfield UserStatsQuery' type='date' name='dateFrom')
+            .entry
+                .inputlabel=Locale('lbl.projectdateto')
+                .inputdiv
+                    input(size='50' class='inputfield UserStatsQuery' type='date' name='dateTo')
+            .button.inactive(id='UserStats')
+                .label= Locale("lbl.userstats")
+
+
+

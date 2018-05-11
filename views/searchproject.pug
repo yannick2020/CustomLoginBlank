@@ -1,0 +1,44 @@
+extends layout
+block head
+    //-js
+block content
+    .center
+        #formdiv(onkeydown='if(event.keyCode ===13)SearchProject.Rechercher();')
+            .entry
+                .inputlabel= Locale('lbl.Keyword')
+                .inputdiv
+                    input#query(class='inputfield')
+            if SessionUser.HasPermission("SearchAllStores")
+                .entry
+                    .inputlabel= Locale("lbl.projectstore")
+                    .inputdiv
+                        input#StoreID(class='inputfield' placeholder="000")
+            .entry
+                .inputlabel= Locale("lbl.projectcollabs")
+                .inputdiv
+                    select.inputfield#ProjectRole
+                        option(value="" disabled selected)= Locale("lbl.projectroleplaceholder")
+                        option(value="")= Locale('lbl.all')
+                        option(value="ProjectOwner")= 'ProjectOwner'
+                        option(value="ProjectAdmin")= 'ProjectAdmin'
+                .inputdiv
+                    input#userInfo(class='inputfield')
+            .entry
+                .inputlabel= Locale("lbl.projectneedshelp")
+                .inputdiv
+                    input#NeedHelp(class='inputfield' type='checkbox' style='width:auto;')
+            .entry
+                .inputlabel=Locale("lbl.projectdatecreated")+':'
+                .inputlabel= Locale("lbl.projectdatefrom")
+                .inputdiv
+                    input#dateFrom(class='inputfield' type='date')
+                .inputlabel= Locale("lbl.projectdateto")
+                .inputdiv
+                    input#dateTo(class='inputfield' type='date')
+        br
+        .buttoncolumn
+            .button.active(onclick="SearchProject.Rechercher()")
+                    .label= Locale("lbl.search")
+    .projectTable
+        #results
+            h2= Locale("lbl.resultdisplay")

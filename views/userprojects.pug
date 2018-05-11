@@ -1,0 +1,59 @@
+extends layout
+block head
+    //-Front end Stylesheets and JS
+block content
+    .center
+        h2= Locale("lbl.projectscreated")
+        .projectTable
+            if projects && projects.length !==0
+                .tableItem.row.tableheader(style='height:1em')
+                    .col.odd.double= Locale("lbl.projectname")
+                    .col.even= Locale("lbl.projectdatecreated")
+                    .col.odd= Locale("lbl.projectowner")
+                    .col.even= Locale("lbl.projectcollabs")
+                each project in projects
+                    if project && project.hasOwnProperty('name_s_lower')
+                        .tableItem.row
+                            a(href=project.projectLink onClick="SearchProject.AddSelf('"+project.prjId_s+"')" target="_blank")
+                                .thumbnail(style="background-image: url(" + project.imgUrl_s + ")")
+                            .col.odd.double
+                                span.projectTitle= project.name_s_lower
+                            .col.even
+                                span=new Date(project.createdOn_dt).toLocaleDateString(Locale('Language'))
+                            .col.odd
+                                -var username = project.collabs_ss[0].split(':')[1].replace('AWSCognito_','')
+                                a(href='/user/profile/' + username)=username
+                            .col.even
+                                -var collaborators = project.collabs_ss.slice(1).map(function(collaborator){return collaborator.split(':')[1].replace('AWSCognito_','')})
+                                for collaborator in collaborators
+                                    a(href='/user/profile/' + collaborator)=collaborator
+                                    br
+            else
+                h2= Locale("msg.noprojectsfound")
+        h2=Locale("lbl.projectscollaborated")
+        .projectTable
+            if projectsCollab && projectsCollab.length !== 0
+                .tableItem.row.tableheader(style='height:1em')
+                    .col.odd.double= Locale("lbl.projectname")
+                    .col.even= Locale("lbl.projectdatecreated")
+                    .col.odd= Locale("lbl.projectowner")
+                    .col.even= Locale("lbl.projectcollabs")
+                each project in projectsCollab
+                    if project && project.hasOwnProperty('name_s_lower')
+                        .tableItem.row
+                            a(href=project.projectLink onClick="SearchProject.AddSelf('"+project.prjId_s+"')" target="_blank")
+                                .thumbnail(style="background-image: url(" + project.imgUrl_s + ")")
+                            .col.odd.double
+                                span.projectTitle= project.name_s_lower
+                            .col.even
+                                span=new Date(project.createdOn_dt).toLocaleDateString(Locale('Language'))
+                            .col.odd
+                                -var username = project.collabs_ss[0].split(':')[1].replace('AWSCognito_','')
+                                a(href='/user/profile/' + username)=username
+                            .col.even
+                                -var collaborators = project.collabs_ss.slice(1).map(function(collaborator){return collaborator.split(':')[1].replace('AWSCognito_','')})
+                                for collaborator in collaborators
+                                    a(href='/user/profile/' + collaborator)=collaborator
+                                    br
+            else
+                h2= Locale("msg.noprojectsfound")

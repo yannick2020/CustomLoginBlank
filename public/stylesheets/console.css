@@ -1,0 +1,73 @@
+body {
+	background:lightgray;
+	font-family: "Verdana", sans-serif;
+	min-width:750px;
+}
+
+.title {
+	width:650px;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	font-size:32px;
+	padding-top:25px;
+	padding-bottom:25px;
+	position:relative;
+	margin-top:10px;
+	z-index:-1;
+}
+
+.entry {
+	margin-bottom:10px;
+}
+
+.label {
+	display:inline-block;
+	width:auto;
+	text-align:right;
+}
+.inputlabel {
+	display:inline-block;
+	width:250px;
+	text-align:right;
+}
+
+input {
+	padding:2px 4px;
+
+}
+
+.inputdiv {
+	display:inline-block;
+	width:360px;
+	padding:0px 4px;
+}
+
+.buttonrow {
+	margin-left:25%;
+	width:69%;
+	margin-top:25px;
+}
+
+.button {
+	display:inline-block;
+	border: 1px solid black;
+	background:orange;
+	padding:10px;
+	color:white;
+	text-align:left;
+	margin-right:10px;
+}
+
+.button:hover {
+	cursor:pointer;
+}
+
+.inactive {
+	background:gray;
+}
+
+.inactive:hover {
+	background:gray;
+	cursor:no-drop;
+}

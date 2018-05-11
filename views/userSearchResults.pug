@@ -1,0 +1,14 @@
+table(style='width:100%;')
+    each user, index in Results.Users
+        tr(id='user'+index).userRow
+            th.userinfotoggle(rowspan='3' onclick="toggleUserInfo('"+index+"')")= '+'
+            td
+                a(href='/user/profile/'+user.username)= user.name
+        tr
+            td.moreinfo(class="user"+index)=user.email
+        if(user.GetDisplayName())
+            tr
+                td.moreinfo(class="user"+index)=user.GetDisplayName()
+div#navigator
+    #PrevPageBtn.button.inactive=Locale("lbl.prevpage")
+    #NextPageBtn.button.inactive=Locale("lbl.nextpage")

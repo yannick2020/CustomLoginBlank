@@ -1,0 +1,35 @@
+.main-app-bar-view
+    .app-header.twelvecol.last
+        .logo-wrapper
+
+        #controls-wrapper
+            span.ids-text
+            #header-right-area.header-right
+                .quick-links-view
+                    .header-button
+                        a(href='/' class=homeActivated ? tabClassActive : tabClassInactive) Home
+                    if(tabArray["ViewMyProjects"])
+                        .header-button
+                            a(href='/myprofile/myprojects' class=projectsActivated ? tabClassActive : tabClassInactive) View Projects
+                    if(tabArray["ViewAccount"])
+                        .header-button
+                            a(href='/myprofile' class=profileActivated ? tabClassActive : tabClassInactive) View Profile
+                    if(tabArray["ModifyAccount"])
+                        .header-button
+                            a(href='/myprofile/editprofile' class=editprofileActivated ? tabClassActive : tabClassInactive) Modify Account
+                    if(tabArray["SearchUser"])
+                        .header-button
+                            a(href='/user/searchuser' class=searchuserActivated ? tabClassActive : tabClassInactive) Search User
+                    if(tabArray["SearchProject"])
+                        .header-button
+                            a(href='/searchproject' class=searchprojectActivated ? tabClassActive : tabClassInactive) Search Projects
+                    if(tabArray["ViewStoresStatistics"])
+                        .header-button
+                            a(href='/statistics' class=statsActivated ? tabClassActive : tabClassInactive) Stores Statistics
+                    if(tabArray["LegacyConsole"])
+                        .header-button
+                            a(href='/legacy' class=legacyActivated ? tabClassActive : tabClassInactive) Leagacy Console
+        #user-container
+            .user-summary-view.in-header
+                a#login-btn.header-button.header-big(href='#', style='display: table-cell;')
+                    span Logout

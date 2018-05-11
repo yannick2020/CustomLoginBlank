@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        title= title
+        include scripts
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        block head
+            script(src='/javascripts/loginScript.js' defer)
+            script(src='/javascripts/formScript.js' defer)
+
+    body
+
+        #content(style='display:none')
+            .tinyForm(onkeypress="checkKey(event)")
+                img(src='/images/logo.png')
+                .entry
+                    .inputlabel(style='display:inline-block;')= Locale("lbl.username")+' :'
+                    .inputdiv
+                        input.inputfield#login-form-username( type='text', size='50')
+                .entry
+                    .inputlabel(style='display:inline-block;')= Locale("lbl.password")+' :'
+                    .inputdiv
+                        input.inputfield#login-form-password( type='password', size='50' )
+                        .forgotPass
+                            a(style="float:right;" href='#' onclick="document.location.href='/forgotpassword'+window.location.search")= Locale('lbl.forgotpassword')
+                br
+                .button.active(onclick="authenticate();")
+                    .label(style='width:100%')= Locale("lbl.signin")
+                .button.active( onclick="document.location.href='/register'+window.location.search")
+                    .label(style='width:100%')= Locale("lbl.register")
+        #Loader(style='display:block;margin:20%')
+            img(src="/images/loader_smallSpinner.gif" style='margin-left:50%;')

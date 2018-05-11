@@ -1,0 +1,370 @@
+:root {
+    --text-color:#333;
+    --hover-text-color:#fff;
+
+    --content-background-color:#f1f1f1;
+
+    --button-background-color:#dedbd5;
+    --button-text-color:#464646;
+    --hover-button-background-color:#F8981D;
+    --hover-button-text-color:#fff;
+
+    --quick-links-view-background-color:#F6F6F6;
+
+    --header-button-text-color:#000;
+    --hover-header-button-background-color:#F8981D;
+    --hover-header-button-text-color:#FFFFFF;
+
+    --grid-background-color:#fcfcfc;
+    --gridItem-background-color:#dedbd5;
+    --hover-gridItem-background-color:#F8981D;
+    --hover-gridItem-text-color:#fff;
+
+    --results-background-color:#fcfcfc;
+
+    --role-input-background-color:#dedbd5;
+    --role-input-text-color:#464646;
+    --hover-role-input-background-color:#F8981D;
+    --hover-role-input-text-color:#fff;
+
+}
+
+body {
+    color:var(--text-color);
+    font-family: "Verdana", sans-serif;
+}
+header {
+    position: -webkit-sticky;
+    position: sticky;
+    top:0;
+    z-index: 1000;
+}
+
+#content{
+    text-align: center;
+    background:var(--content-background-color);
+    border: 1px solid #ccc;
+    min-height:400px;
+    padding-top:20px;
+}
+
+.title {
+    width:650px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:center;
+    font-size:32px;
+    padding-top:25px;
+    padding-bottom:25px;
+    position:relative;
+    margin-top:10px;
+    z-index:-1;
+}
+
+.entry {
+    width:100%;
+    margin-top:10px;
+}
+
+.label {
+    color: inherit;
+    text-decoration: none;
+    display:inline-block;
+    width:auto;
+    text-align:right;
+}
+.inputlabel {
+    display:inline-block;
+    width:100%;
+    text-align:left;
+}
+.center{
+    display: inline-block;
+    text-align: left;
+    min-width: 50%;
+    width: min-content;
+}
+
+.forgotPass{
+    cursor: pointer;
+}
+.tinyForm {
+    margin: 10px auto;
+    width: 385px;
+}
+
+.inputdiv {
+    display:inline-block;
+    padding:0 4px;
+    width:100%;
+}
+.inputfield {
+    width:100%;
+    padding:2px 4px;
+
+}
+.inputfield[type=number]::-webkit-inner-spin-button,
+.inputfield[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.buttonrow {
+}
+
+.button {
+    display:inline-block;
+    font-weight: bold;
+    font-size: 12px;
+    background: var(--button-background-color);
+    color: var(--button-text-color);
+    padding:10px;
+    text-align:left;
+    margin-right:10px;
+}
+
+.button:hover {
+    cursor:pointer;
+    background: var(--hover-button-background-color);
+    color: var(--hover-button-text-color);
+}
+
+.roleInput .ms-sel-item {
+    font-weight: bold;
+    background: var(--role-input-background-color);
+    color: var(--role-input-text-color);
+}
+.roleInput .ms-sel-item:hover {
+    background: var(--hover-role-input-background-color);
+    color: var(--hover-role-input-text-color);
+}
+
+.inactive {
+    background:gray;
+    color:black;
+}
+.inactive:hover {
+    background:gray;
+    color:black;
+    cursor:no-drop;
+}
+.grid{
+    margin: 1%;
+    text-align: center;
+    background-color: var(--grid-background-color);
+    border-radius: 10px;
+    border: 1px groove black;
+}
+.gridItem{
+    text-align: center;
+    overflow: hidden;
+    margin: 1%;
+    display: inline-block;
+    max-width: 300px;
+    max-height: 300px;
+    min-width: 150px;
+    min-height: 150px;
+    width: 20%;
+    height: 20%;
+    background-color: var(--gridItem-background-color);
+    border-radius: 25px;
+}
+.gridItem:hover{
+    cursor:pointer;
+    background: var(--hover-gridItem-background-color);
+    color: var(--hover-gridItem-text-color);
+}
+.gridItem div.thumbnail{
+    background-image: url(/images/notfound.jpg);
+    border: 1px solid black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    margin: 5px 5px 0px;
+    display:block;
+    max-width: 300px;
+    max-height: 300px;
+    min-width: 100px;
+    min-height: 100px;
+    padding-top: 30%;
+    border-radius: 25px;
+}
+.gridItem h3{
+    min-height: 50px;
+    display: inline-block;
+    height:20%;
+}
+.gridItem div.button{
+    position: relative;
+    left: 20%;
+    bottom: 30px;
+    border-radius: 25px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.gridItem a{
+    text-decoration: none;
+    color: inherit;
+}
+.projectTable{
+    text-align: left;
+    background-color: var(--grid-background-color);
+}
+
+.projectTable .row{
+    display: inline-block;
+    min-width: 100%;
+    height: 80px;
+    text-align: left;
+    background-color: var(--grid-background-color);
+    border: 1px groove black;
+}
+.projectTable .col{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 20%;
+    height: 100%;
+    display: inline-block;
+    border-right: 1px groove black;
+}
+
+.projectTable .thumbnail{
+    background-image: url(/images/notfound.jpg);
+    border: 1px solid black;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: white;
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+    display:inline-block;
+}
+.projectTable .projectTitle{
+    width: 100%;
+}
+#results {
+    margin: 1%;
+    display: block;
+    list-style-type: disc;
+    background-color: var(--results-background-color);
+    height: auto;
+}
+#results table,th,td {
+    border: 1px solid black;
+    background-color: var(--results-background-color);
+    text-overflow: ellipsis;
+}
+#results th {
+    cursor: pointer;
+    width: 1em;
+}
+#results table {
+    table-layout: fixed;
+}
+#results td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#results .moreinfo{
+    display: none;
+}
+#results .moreinfo.toggled{
+    display: table-cell;
+}
+#results .userinfotoggle:hover{
+    background-color: black;
+    color: white;
+}
+
+.quick-links-view {
+    min-height: 70px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    text-align: center;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: var(--quick-links-view-background-color);
+}
+
+/* Style the buttons that are used to open the tab content */
+.quick-links-view .header-button {
+    min-width: 60px;
+    text-decoration: none;
+    color: var(--header-button-text-color);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: auto;
+    padding: 0 16px;
+}
+
+.quick-links-view .header-button p{
+   margin: 25px 0px;
+}
+.quick-links-view .logo{
+    opacity:1;
+    margin-right: 16px;
+    float: left;
+    height: 100%;
+    min-height: 70px;
+    min-width: 70px;
+    display: inline-block;
+    text-decoration: none;
+    background: url('/images/logo.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    outline: none;
+    margin: 7px 16px;
+}
+
+/* Change background color of buttons on hover */
+.quick-links-view .header-button:hover {
+    background-color: var(--hover-header-button-background-color);
+    color: var(--hover-header-button-text-color);
+    transition: 0.3s;
+}
+/* Create an active/current tablink class */
+.quick-links-view .header-button.active {
+    background-color: var(--hover-header-button-background-color);
+    color: var(--hover-header-button-text-color);
+}
+.dropdown{
+    display: none;
+    float: right;
+}
+#tablinks {
+    float: left;
+}
+.quick-links-view #tablinks a{
+    display: inline-block;
+}
+/*Style lougout button*/
+.logoutLink{
+    float: right;
+}
+
+.welcomeHeader{
+    float: right;
+    padding: 14px 16px;
+}
+@media only screen and (max-width: 970px) {
+    /* For mobile phones: */
+    /* Style the buttons that are used to open the tab content */
+    .quick-links-view #tablinks {
+        display: none;
+        min-width: 100%;
+    }
+    .quick-links-view #tablinks a{
+        min-width: 100%;
+    }
+    .dropdown{
+        display: inline-block;
+    }
+}
+
+

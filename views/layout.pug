@@ -1,0 +1,39 @@
+doctype html5
+html
+    head
+        title= title
+        include scripts
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        block head
+    body.ideal-spaces-login
+        header
+            -var tabClassInactive = "",tabClassActive = "active";
+            #headermenu.quick-links-view
+                .logo
+                //- a.header-button(href='/' class=homeActivated ? tabClassActive : tabClassInactive)=Locale("lbl.home")
+                if(SessionUser.GetRoles().length >0)
+                    a.header-button.dropdown(onclick='toggleMenu()')
+                        p.fas.fa-bars
+                a.header-button.dropdown(href='/')
+                    p.fas.fa-home
+                if(path !=='/')
+                    -console.log(path)
+                    a.header-button.dropdown(href='/')
+                        p.fas.fa-home
+
+                #tablinks
+                    if(SessionUser.HasPermission("ViewAccount"))
+                        a.header-button(href='/myprofile' class=profileActivated ? tabClassActive : tabClassInactive)
+                            p=Locale("lbl.viewprofile")
+                    if(SessionUser.HasPermission("SearchUser"))
+                        a.header-button(href='/user/searchuser' class=searchuserActivated ? tabClassActive : tabClassInactive)
+                            p=Locale("lbl.searchuser")
+                    if(SessionUser.HasPermission("SearchProject"))
+                        a.header-button(href='/searchproject' class=searchprojectActivated ? tabClassActive : tabClassInactive)
+                            p=Locale("lbl.searchproject")
+                    if(SessionUser.HasPermission("ViewStoresStatistics"))
+                        a.header-button(href='/statistics' class=statsActivated ? tabClassActive : tabClassInactive)
+                            p=Locale("lbl.storestats")
+                //-a.logoutLink.header-button(onclick='localStorage.clear();window.location.href = ("/");')= Locale("lbl.signout")
+        #content()
+            block content

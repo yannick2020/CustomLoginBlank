@@ -1,0 +1,39 @@
+extends layout
+block head
+    //-Front end Stylesheets and JS
+    -var action = (otherProfile)?"ViewOthers":"ViewSelf"
+block content
+    .center
+        .entry
+            .inputlabel= (Locale("lbl.username")||'##username##')+ ':'
+            b.inputdiv= user["username"]
+        each val,field in user
+            if SessionUser.UserCanTakeAction("FieldRolesConfig",[field],action) && user[field]
+                .entry
+                    .inputlabel= (Locale("lbl."+field)||field) +' :'
+                    if field !== StoreData
+                        b.inputdiv=  value=user[field]
+                    else
+                        b.inputdiv=  value=user['StoreName']
+        br
+        if(otherProfile)
+            .buttoncolumn
+                if(SessionUser.HasPermission("EditUsers") && canEdit)
+                    a(href="/user/edit/"+user["username"])
+                        .button.active
+                            .label=Locale("lbl.editprofile")
+                a(href="/user/projects/"+user["username"])
+                    .button.active
+                        .label=Locale("lbl.viewprojects")
+        else
+            .buttoncolumn
+                if(SessionUser.HasPermission("ModifyAccount"))
+                    a(href="/myprofile/editprofile")
+                        .button.active
+                            .label=Locale("lbl.editprofile")
+                if(SessionUser.HasPermission("ViewMyProjects"))
+                    a(href="/myprofile/myprojects")
+                        .button.active
+                            .label=Locale("lbl.viewprojects")
+                #bgloballogout.button.active(onclick="globalLogout(this);" confirmation=Locale('lbl.globallogoutconfirm'))
+                    .label= Locale("lbl.globalsignout")
